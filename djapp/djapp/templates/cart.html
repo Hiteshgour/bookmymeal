@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+<!-- Home -->
+
+		<div class="banner_area" style="background:url({% static 'img/back-reg.png' %}) no-repeat scroll center center;  min-height: 20%;" >
+			<div class="container">
+				<div class="banner_content">
+					<h4 style="color: red;">Shopping Cart</h4>
+					
+							<a class="active" href="{{curl}}cart/">Your Cart</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cart -->
+		<br><br>
+		<table class="table table-striped">
+			<tr style="background-color: grey;" >
+				
+					<td style="width: 60%;">PRODUCT</td>
+					<td>PRICE</td>
+					<td>QUANTITY</td>
+					<td>AMOUNT</td>
+					<td>ACTION</td>
+			</tr>
+			<tr>
+				<td style="width: 60%;">PRODUCT</td>
+					<td>PRICE</td>
+					<td>QUANTITY</td>
+					<td>TOTAL</td>
+					<td><a href="{{curl}}user/delproduct?pid={{row.pid}}&vcat=remove" title="Remove" style=" color: lightgrey; font-size: 20px" >X</a></td>
+			</tr>
+			<br>
+
+		</table>
+
+
+    
+
+{% endblock %}

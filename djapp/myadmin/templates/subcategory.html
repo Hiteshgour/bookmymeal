@@ -1,0 +1,54 @@
+{% extends 'adminhome.html' %}
+
+{% block service %}
+<h1 align="center">Add Category Here</h1>
+
+
+<font style="color:orange;font-size:20px;">{{output}}</font>
+<br>
+<form enctype="multipart/form-data" method="post" action={{curl}}myadmin/subcategory/ >
+{% csrf_token %}
+<table class="table table-striped" cellspacing="10">
+<tr>
+	<td>Category Name</td>
+	<td><select name="catnm">
+	<option>select category</option>
+	{% for row in clist %}
+	  <option>{{row.catnm}}</option>
+	{% endfor %}	
+	</select>
+    </td>
+	<td>Subcategory Name</td>
+	<td><input type="text" name="subcatnm" placeholder="Enter category"/></td>
+
+	<td>Category Icon</td>
+	<td><input type="file" name="subcaticon"/></td>
+
+	<td><input class="btn btn-success" type="submit" name="s" value="Add sub-category"/></td>
+</tr>
+</table>
+
+<table class="table table-striped">
+	<tr style="background-color: grey">
+		<th>Category ID</th>
+		<th>Category Name</th>
+		<th>Sub-Category Name</th>
+		<th>Edit Category</th>
+		<th>Action</th>
+	</tr>
+	{% for row in subclist %}
+	<tr>
+		
+		<td>{{row.subcatid}}</td>
+		<td>{{row.catnm}}</td>
+		<td>{{row.subcatnm}}</td>
+		<td><a href="#" title="Edit"  ><i class="fa fa-edit"></i></a></td>
+		<td><a href="{{curl}}myadmin/managesubcategory?subcatid={{row.subcatid}}&vsubcat=delete" title="Delete" style=" color: red; font-size: 20px" ><i class="fa fa-trash"></i></a></td>
+		
+	</tr>
+	{% endfor %}
+</table>
+<br>
+</form>
+<hr>
+{% endblock %}

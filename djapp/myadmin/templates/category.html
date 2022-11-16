@@ -1,0 +1,42 @@
+{% extends 'adminhome.html' %}
+
+{% block service %}
+<h1 align="center" >Add Category Here</h1>
+
+
+<font style="color:orange;font-size:20px;">{{output}}</font>
+<br>
+<form enctype="multipart/form-data" method="post" action={{curl}}myadmin/category/ >
+{% csrf_token %}
+<table class="table table-striped" cellspacing="10">
+<tr>
+	<td>Category Name</td>
+	<td><input type="text" name="catnm" placeholder="Enter category"/></td>
+
+	<td>Category Icon</td>
+	<td><input type="file" name="caticon"/></td>
+
+	<td><input class="btn btn-success" type="submit" name="s" value="Add category"/></td>
+</tr>
+</table>
+<table class="table table-striped">
+	<tr style="background-color: grey">
+		<th>Category ID</th>
+		<th>Category Name</th>
+		<th>Edit Category</th>
+		<th>Action</th>
+	</tr>
+	{% for row in catlist %}
+	<tr>
+		
+		<td>{{row.catid}}</td>
+		<td>{{row.catnm}}</td>
+		<td><a href="#" title="Edit" style="font-size: 20px"><i class="fa fa-edit"></i></a></td>
+		<td><a href="{{curl}}myadmin/managecategory?catid={{row.catid}}&vcat=delete" title="Delete" style=" color: red; font-size: 20px" ><i class="fa fa-trash"></i></a></td>
+		
+	</tr>
+	{% endfor %}
+</table>
+<br>
+</form>
+{% endblock %}

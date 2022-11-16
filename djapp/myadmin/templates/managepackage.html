@@ -1,0 +1,59 @@
+{% extends 'adminhome.html' %}
+
+{% block service %}
+<h1 align="center">Add Packages Here</h1>
+
+
+<font style="color:orange;font-size:20px;">{{output}}</font>
+<br>
+<form enctype="multipart/form-data" method="post" action={{curl}}myadmin/Addpackage/ >
+{% csrf_token %}
+<table class="table table-striped" cellspacing="10">
+<tr>
+	<td>Package Name</td>
+	<td><input type="text" name="packnm" placeholder="package name"/></td>
+	<td>Package Price</td>
+	<td><input type="text" name="packprice" placeholder="package price"/></td>
+</tr>
+<tr>
+	<td>package discription</td>
+	<td><input type="text" name="packdiscription" placeholder="discription"/></td>
+
+	<td>package Image</td>
+	<td><input type="file" name="packimg"/></td>
+</tr>
+<tr>
+	<td>Package duration</td>
+	<td><input type="text" name="packduration" placeholder="package duration"/></td>
+	<td><input class="btn btn-success" type="submit" name="s" value="Add package"/></td>
+	<td></td>
+</tr>
+</table>
+<br>
+
+<table class="table table-striped">
+	<tr style="background-color: grey;">
+		
+			<td>package id</td>
+			<td>package name</td>
+			<td>packagep rice</td>
+			<td>package discription</td>
+			<td>package duration</td>
+			<td>Edit</td>
+			<td>action</td>
+		
+	</tr>
+	{% for row in packlist %}
+	<tr>
+			<td>{{row.packid}}</td>
+			<td>{{row.packnm}}</td>
+			<td>{{row.packprice}}</td>
+			<td>{{row.packdiscription}}</td>
+			<td>{{row.packduration}}</td>
+			<td><a href="#" title="Edit" style="font-size: 20px"><i class="fa fa-edit"></i></a></td>
+			<td><a href="{{curl}}myadmin/delpackage?packid={{row.packid}}&vcat=delete" title="Delete" style=" color: red; font-size: 20px" ><i class="fa fa-trash"></i></a></td>
+	</tr>
+	{% endfor %}
+</table>
+<br><br>
+{% endblock %}

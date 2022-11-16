@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block navigation%}
+        <header class="main_menu_area" style="margin-top: 10px;">
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{curl}}myadmin/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+{% block navlist %}
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class=""><a href="{{curl}}myadmin/">Home</a></li>
+                            <li class="dropdown submenu">
+                                <a href="#">add Category</a>
+                            <ul class="dropdown-menu">
+                                    <li><a href="{{curl}}myadmin/category/">Add category</a></li>
+                                    <li><a href="{{curl}}myadmin/subcategory/">Add subcategory</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown submenu">
+                                <a href="{{curl}}myadmin/menulist/" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">Edit Menu </a>
+                                <ul class="dropdown-menu">
+                                   <!-- <li><a href="menu-grid.html">Menu Grid</a></li>
+                                    <li><a href="menu-list.html">Menu List</a></li>-->
+                                </ul>
+                            </li>
+                           
+                            <li class="dropdown submenu">
+                                <a href="{{curl}}myadmin/Addpackage/" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">add Packages </a>
+                                <!--<ul class="dropdown-menu">
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="blog-gallery.html">Blog Gallery</a></li>
+                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                </ul>-->
+                            </li>
+                            <li><a href="{{curl}}myadmin/customers/">Customers</a></li>
+                                <li class="dropdown submenu">
+                                <a href="#" class="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{sunm}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown-menu">
+                                    <!--<li><a href="{{curl}}userlogin/">Login</a></li>
+                                    <li><a href="{{curl}}register/">Register</a></li>-->
+                                    <li><a href="#">My profile &nbsp;<i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{curl}}setting/">More Setting &nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>
+                                    <li><a href="{{curl}}userlogin/">Log Out &nbsp;<i class="fa fa-lock" aria-hidden="true"></i></a></li>
+                                    <!--<li><a href="blog-details.html">Blog Details</a></li>-->
+                                </ul>
+                                </li>
+                                {% endblock %}
+                                <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+        {% endblock %}
+{% block main %}
+{% block slider %}
+ <section class="banner_area" style="background:url({% static 'img/back-reg.png' %}) no-repeat scroll center center; min-height: 20%;">
+            <div class="container">
+                <div class="banner_content">
+                    <h4 style="color: red;">Welcome To Admin</h4>
+
+                    <!--<a href="{{curl}}myadmin/">Home</a>
+                    <a class="" href="#">Admin</a>-->
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block service %}
+<div class="product-status mg-b-30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-status-wrap">
+                            <table class="table table-striped">
+                                <tr style="background-color: grey;">
+                                    <td>
+                                      <h4>Products List</h4>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                    <td><a href="{{curl}}myadmin/delmenu?menuid={{row.menuid}}&vcat=delete" title="Delete" style=" color: red; font-size: 20px" >ADD PRODUCT</a></td>
+                                </tr>
+                            </table>
+                                <table class="table table-striped">
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Title</th>
+                                    <th>Status</th>
+                                    <th>Purchases</th>
+                                    <th>Product sales</th>
+                                    <th>Stock</th>
+                                    <th>Price</th>
+                                    <th>Setting</th>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/new-product/5-small.jpg" alt="" /></td>
+                                    <td>Product Title 1</td>
+                                    <td>
+                                        <button class="pd-setting">Active</button>
+                                    </td>
+                                    <td>50</td>
+                                    <td>$750</td>
+                                    <td>Out Of Stock</td>
+                                    <td>$15</td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/new-product/6-small.jpg" alt="" /></td>
+                                    <td>Product Title 2</td>
+                                    <td>
+                                        <button class="ps-setting">Paused</button>
+                                    </td>
+                                    <td>60</td>
+                                    <td>$1020</td>
+                                    <td>In Stock</td>
+                                    <td>$17</td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/new-product/7-small.jpg" alt="" /></td>
+                                    <td>Product Title 3</td>
+                                    <td>
+                                        <button class="ds-setting">Disabled</button>
+                                    </td>
+                                    <td>70</td>
+                                    <td>$1050</td>
+                                    <td>Low Stock</td>
+                                    <td>$15</td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/new-product/5-small.jpg" alt="" /></td>
+                                    <td>Product Title 4</td>
+                                    <td>
+                                        <button class="pd-setting">Active</button>
+                                    </td>
+                                    <td>120</td>
+                                    <td>$1440</td>
+                                    <td>In Stock</td>
+                                    <td>$12</td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/new-product/6-small.jpg" alt="" /></td>
+                                    <td>Product Title 5</td>
+                                    <td>
+                                        <button class="pd-setting">Active</button>
+                                    </td>
+                                    <td>30</td>
+                                    <td>$540</td>
+                                    <td>Out Of Stock</td>
+                                    <td>$18</td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/new-product/7-small.jpg" alt="" /></td>
+                                    <td>Product Title 6</td>
+                                    <td>
+                                        <button class="ps-setting">Paused</button>
+                                    </td>
+                                    <td>400</td>
+                                    <td>$4000</td>
+                                    <td>In Stock</td>
+                                    <td>$10</td>
+                                    <td>
+                                        <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="custom-pagination">
+                                <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p>Copyright © 2018 <a href="https://colorlib.com/wp/templates/">Colorlib</a> All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% endblock %}
+{% block footer %}
+<div class="copy_right_area">
+                <div class="container">
+                    <div class="pull-left">
+                        <h5><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Welcome To Our Meal <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="{{curl}}myadmin/" target="_blank">FirstMeal</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p></h5>
+                    </div>
+                    <div class="pull-right">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class=""><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Menu</a></li>
+                           <!-- <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Reservation</a></li>
+                            <li><a href="#">News</a></li>-->
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+{% endblock %}
